@@ -1,13 +1,3 @@
-// *****************************************************
-// [*] Challenge
-//  1. Delete dummy data
-//  2. Read and parse the localStorage when app starts
-//  3. Stringify and write the data when new data is added
-// *****************************************************
-
-// *****************************************************
-// Get Existing TODOS from localStorage
-// *****************************************************
 const getSavedTODOS = function(){
     const todosJSON = localStorage.getItem('todos')
     if (todosJSON !== null){
@@ -17,16 +7,10 @@ const getSavedTODOS = function(){
     }
 }
 
-// *****************************************************
-// Save TODOs to localStorage
-// *****************************************************
 const saveTODOS = function(todos){
     localStorage.setItem('todos', JSON.stringify(todos))
 }
 
-// *****************************************************
-// Remove TODO by id
-// *****************************************************
 const removeTODO = function(id){
     const ind = todos.findIndex(function(todo){
         return todo.id === id
@@ -36,9 +20,6 @@ const removeTODO = function(id){
     }
 }
 
-// *****************************************************
-// Remove TODO by id
-// *****************************************************
 const checkTODO = function(e, id){
     const ind = todos.findIndex(function(todo){
         return todo.id === id
@@ -48,10 +29,6 @@ const checkTODO = function(e, id){
     }
 }
 
-// *****************************************************
-// Generate TODO DOMs
-// Challenge: setup root, checkbox, span (text), button
-// *****************************************************
 const generateTodoDOM = function(todo){
     const todoEl = document.createElement('div')
     const checkbox = document.createElement('input')
@@ -87,22 +64,15 @@ const generateTodoDOM = function(todo){
     return todoEl
 }
 
-// *****************************************************
-// Get Summary
-// *****************************************************
+
 const getSummaryDOM = function(incompleteTODOS){
     let reminder = document.createElement('h4')
     reminder.textContent = `You have ${incompleteTODOS.length} TODOS left`
     return reminder
 }
 
-// *****************************************************
-// Render TODOs by filter criteria
-// *****************************************************
+
 const renderTODOs = function(todos, filter){
-    // filteredList - list of items that 1) text that matches the search text. AND 2) keeps item when box is unchecked or incomplete item
-        // !filter.boxChecked || !todo.completed - !filter.boxChecked ensures items show when checkbox is not checked
-        //                                       - !todo.complete ensures when box is checked, incomplete items show
         const filteredList = todos.filter(function(todo){
         const searchtextMatch = todo.text.toLowerCase().includes(filter.searchText.toLowerCase())
         const boxCheckedMatch = !filter.boxChecked || !todo.completed
@@ -115,12 +85,9 @@ const renderTODOs = function(todos, filter){
 
     document.querySelector('#todos').innerHTML = ''
     
-    // A summary how many things todo
     let reminder = getSummaryDOM(incompleteTODOS)
     document.querySelector('#todos').appendChild(reminder)
     
-
-    // Print text element to screen
     filteredList.forEach(function(item){
         let filterEle = generateTodoDOM(item)
         document.querySelector('#todos').appendChild(filterEle)
