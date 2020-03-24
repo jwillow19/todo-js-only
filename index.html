@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <h3>hello, this is a todo app</h3>
+    </head>
+    <body>
+        <input id='filter-todo', type='text', placeholder="Filter TODOs">
+        
+        <label>
+            <input id='hide-complete', type="checkbox"> Hide Completed
+        </label>
+        
+        <div id='todos'></div>
+
+        <form id='todo-form'>
+            <input type="text", placeholder="Enter your TODO here", name="newTODO"> 
+            <button>Add New TODO</button>
+        </form>
+
+        
+        <script src="http://wzrd.in/standalone/uuid%2Fv4@latest"></script>
+        <script src="todos-functions.js"></script>
+        <script src="todo-app.js"></script>
+
+    </body>
+
+</html>
